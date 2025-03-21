@@ -1,0 +1,158 @@
+@charset "UTF-8"; /* Define o conjunto de caracteres UTF-8 para evitar problemas com acentos */
+
+/* ======= ESTILIZAÇÃO GERAL ======= */
+body {
+    font-family: Arial, sans-serif; /* Define a fonte do site */
+    margin: 0; /* Remove margem padrão do navegador */
+    padding: 0; /* Remove espaçamento interno padrão */
+    background-color: #f8f9fa; /* Define uma cor de fundo clara */
+    text-align: center; /* Centraliza o texto por padrão */
+}
+
+/* ======= CABEÇALHO ======= */
+header {
+    background: #007bff; /* Fundo azul vibrante */
+    color: white; /* Texto branco para contraste */
+    padding: 15px; /* Adiciona espaço interno ao cabeçalho */
+}
+
+/* ======= MENU DE NAVEGAÇÃO ======= */
+nav {
+    background: #007bff; /* Cor de fundo azul */
+    padding: 15px 0; /* Adiciona espaçamento vertical */
+    text-align: center; /* Centraliza o menu */
+}
+
+/* Remove os estilos padrões da lista */
+nav ul {
+    list-style: none; /* Remove os marcadores da lista */
+    padding: 0;
+    margin: 0;
+    display: flex; /* Usa flexbox para organizar os itens */
+    justify-content: center; /* Centraliza os itens */
+    gap: 20px; /* Espaçamento entre os links */
+}
+
+/* Estiliza os itens da lista */
+nav ul li {
+    display: inline;
+}
+
+/* Estiliza os links do menu */
+nav ul li a {
+    text-decoration: none; /* Remove o sublinhado padrão */
+    color: white; /* Define a cor branca para os links */
+    font-size: 18px; /* Define o tamanho do texto */
+    font-weight: bold; /* Deixa o texto em negrito */
+    padding: 10px 15px; /* Adiciona espaço interno */
+    border-radius: 5px; /* Arredonda as bordas */
+    transition: 0.3s ease-in-out; /* Suaviza a transição no hover */
+}
+
+/* Efeito hover nos links do menu */
+nav ul li a:hover {
+    background: #0056b3; /* Cor azul mais escura ao passar o mouse */
+    transform: scale(1.1); /* Aumenta levemente o tamanho */
+}
+
+/* ======= SEÇÃO HERO (BANNER PRINCIPAL) ======= */
+.hero {
+    background: #0056b3; /* Fundo azul escuro */
+    color: white; /* Texto branco */
+    padding: 50px; /* Adiciona espaçamento interno */
+}
+
+/* ======= CONTAINER PRINCIPAL ======= */
+.container {
+    margin: 20px auto; /* Adiciona margens externas */
+    padding: 20px; /* Adiciona espaçamento interno */
+    background: white; /* Fundo branco */
+    width: 80%; /* Define a largura do container */
+    border-radius: 8px; /* Arredonda as bordas */
+    box-shadow: 0px 0px 10px rgba(0,0,0,0.1); /* Adiciona uma sombra suave */
+}
+
+/* ======= SEÇÃO DE PRODUTOS ======= */
+.produtos {
+    display: flex; /* Usa flexbox para organizar os produtos */
+    justify-content: space-around; /* Distribui os produtos igualmente */
+    flex-wrap: wrap; /* Permite que os produtos se ajustem em telas menores */
+}
+
+/* Estilização de cada produto */
+.produto {
+    background: #e3e3e3; /* Fundo cinza claro */
+    padding: 15px; /* Adiciona espaçamento interno */
+    border-radius: 8px; /* Arredonda as bordas */
+    width: 30%; /* Define a largura de cada produto */
+    margin: 10px; /* Adiciona espaçamento entre os produtos */
+}
+
+/* Ajuste das imagens dentro dos produtos */
+.produto img {
+    width: 100%; /* Faz a imagem ocupar toda a largura do card */
+    border-radius: 8px; /* Arredonda as bordas da imagem */
+}
+
+/* ======= RODAPÉ ======= */
+footer {
+    margin-top: 20px; /* Adiciona espaçamento acima do rodapé */
+    padding: 10px; /* Adiciona espaço interno */
+    background: #007bff; /* Fundo azul */
+    color: white; /* Texto branco */
+}
+
+/* ======= SEÇÃO DE CONTATO ======= */
+
+/* Estilização da seção de informações de contato */
+.contato-info {
+    background: #f8f8f8; /* Fundo cinza claro */
+    padding: 15px; /* Adiciona espaçamento interno */
+    border-radius: 8px; /* Arredonda as bordas */
+    margin-bottom: 20px; /* Adiciona margem na parte inferior */
+    text-align: left; /* Alinha o texto à esquerda */
+}
+
+/* Estilização do formulário de contato */
+.contato-form {
+    display: flex; /* Usa flexbox */
+    flex-direction: column; /* Organiza os elementos verticalmente */
+    gap: 10px; /* Adiciona espaçamento entre os campos */
+}
+
+/* Estilização dos rótulos dos campos */
+.contato-form label {
+    font-weight: bold; /* Deixa o texto do rótulo em negrito */
+}
+
+/* Estilização dos campos de entrada e área de texto */
+.contato-form input,
+.contato-form textarea {
+    width: 100%; /* Define a largura máxima */
+    padding: 10px; /* Adiciona espaçamento interno */
+    border: 1px solid #ccc; /* Adiciona uma borda cinza */
+    border-radius: 5px; /* Arredonda as bordas */
+}
+
+/* Estilização do botão de envio */
+.contato-form button {
+    background: #007bff; /* Cor azul */
+    color: white; /* Texto branco */
+    padding: 10px; /* Adiciona espaçamento interno */
+    border: none; /* Remove a borda padrão */
+    border-radius: 5px; /* Arredonda as bordas */
+    cursor: pointer; /* Muda o cursor para indicar clique */
+    font-size: 16px; /* Define o tamanho do texto */
+}
+
+/* Efeito hover no botão */
+.contato-form button:hover {
+    background: #0056b3; /* Azul mais escuro ao passar o mouse */
+}
+.btn{
+    color: white;
+    font-weight: bold;
+}
+.btn:hover{
+ color: rgba(241, 236, 236, 0.796);
+}
