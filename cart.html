@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ShopMax - Carrinho</title>
+  <link rel="stylesheet" href="css/styles.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script defer src="js/script.js"></script>
+</head>
+<body>
+  <!-- Barra superior -->
+  <div class="top-bar">
+    <div class="top-bar-left">
+      <img src="assets/images/amazon-pin.png" alt="Pin" />
+      <div class="delivery-info">
+        <span>Entregar em</span>
+        <strong>São Paulo</strong>
+      </div>
+    </div>
+    <div class="top-bar-right">
+      <span id="clock"></span>
+    </div>
+  </div>
+
+  <!-- Cabeçalho principal -->
+  <header class="header">
+    <div class="header-left">
+      <div class="logo">
+        <a href="index.html">ShopMax</a>
+      </div>
+    </div>
+    <div class="header-right">
+      <div class="cart">
+        <img src="assets/images/cart-icon.png" alt="Carrinho" />
+        <span class="cart-count" id="cart-count">0</span>
+      </div>
+    </div>
+  </header>
+
+  <nav class="nav-links">
+    <ul>
+      <li><a href="index.html" data-category="todos">Voltar à Loja</a></li>
+    </ul>
+  </nav>
+
+  <!-- Seção do Carrinho -->
+  <main>
+    <section class="cart-section">
+      <h2>Seu Carrinho</h2>
+      <div id="cart-items"></div>
+      <p class="total-price" id="cart-total-price">Total: R$0,00</p>
+      <button id="clear-cart">Esvaziar Carrinho</button>
+      <button id="go-checkout">Prosseguir para Checkout</button>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 ShopMax. Inspirado na Amazon. Todos os direitos reservados.</p>
+  </footer>
+</body>
+</html>

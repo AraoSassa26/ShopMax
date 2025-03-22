@@ -1,92 +1,187 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ShopMax - Seu E-commerce Ideal</title>
-  <link rel="stylesheet" href="css/styles.css">
-  <link rel="stylesheet" href="css/responsive.css">
-  <!-- jsPDF para gerar PDF da fatura -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ShopMax - Início</title>
+  <link rel="stylesheet" href="css/styles.css" />
+  <!-- jsPDF para geração de PDF (usado no checkout) -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script defer src="js/script.js"></script>
 </head>
 <body>
-  <!-- Cabeçalho com logo, carrinho e menu -->
+  <!-- Barra superior -->
+  <div class="top-bar">
+    <div class="top-bar-left">
+      <img src="assets/images/amazon-pin.png" alt="Pin" />
+      <div class="delivery-info">
+        <span>Entregar em</span>
+        <strong>São Paulo</strong>
+      </div>
+    </div>
+    <!-- Relógio em tempo real -->
+    <div class="top-bar-right">
+      <span id="clock"></span>
+    </div>
+  </div>
+
+  <!-- Cabeçalho principal -->
   <header class="header">
-    <div class="logo">
-      <a href="index.html">ShopMax</a>
+    <!-- Esquerda: Logo + Botão “Todos” -->
+    <div class="header-left">
+      <div class="logo">
+        <a href="#">ShopMax</a>
+      </div>
+      <div class="all-categories">
+        <button id="all-categories-btn">&#9776; Todos</button>
+      </div>
     </div>
-    <!-- Ícone do Carrinho -->
-    <div class="cart" id="cart">
-      <img src="assets/images/cart-icon.png" alt="Carrinho">
-      <span id="cartCount">0</span>
+
+    <!-- Barra de busca -->
+    <div class="search-bar">
+      <input type="text" id="search-input" placeholder="Pesquisar na ShopMax..." autocomplete="off" />
+      <button class="search-button" id="search-btn">&#128269;</button>
+      <!-- Dropdown de sugestões -->
+      <ul id="suggestions" class="suggestions-list"></ul>
     </div>
-    <!-- Ícone do menu para mobile -->
-    <div class="hamburger" id="hamburger">
-      <span></span>
-      <span></span>
-      <span></span>
+
+    <!-- Carrinho -->
+    <div class="header-right">
+      <div class="cart" id="cart-icon">
+        <a href="cart.html">
+          <img src="assets/images/cart-icon.png" alt="Carrinho" />
+          <span class="cart-count" id="cart-count">0</span>
+        </a>
+      </div>
     </div>
-    <!-- Menu de Navegação -->
-    <nav class="nav" id="nav">
-      <ul>
-        <li><a href="index.html">Início</a></li>
-        <li><a href="produtos.html">Produtos</a></li>
-        <li><a href="equipe.html">Equipe</a></li>
-      </ul>
-    </nav>
   </header>
 
-  <!-- Conteúdo Principal -->
-  <main>
-    <!-- Banner -->
-    <section class="banner">
-      <h1>Nós somos ShopMax</h1>
-      <p>Bem-vindos à nossa loja virtual! Aqui, juntos, construímos a melhor experiência de compra.</p>
-    </section>
+  <!-- Barra de categorias/links com subcategorias -->
+  <nav class="nav-links">
+    <ul>
+      <li><a href="#" data-category="todos">Todos</a></li>
+      <li><a href="#" data-category="ofertas">Ofertas do dia</a></li>
+      <li><a href="#" data-category="mais-vendidos">Mais vendidos</a></li>
 
-    <!-- Produtos em Destaque -->
-    <section class="produtos-destaque">
-      <h2>Produtos em Destaque</h2>
-      <div class="produtos-container">
-        <!-- Card de Produto (exemplo) -->
-        <article class="produto" data-id="1" data-nome="Produto 1" data-preco="99.90" data-categoria="eletronicos">
-          <img src="assets/images/produto1.jpg" alt="Produto 1">
-          <h3>Produto 1</h3>
-          <p>Descrição breve do produto.</p>
-          <button class="buy-btn">Comprar</button>
-        </article>
-        <!-- Duplicar ou adicionar outros cards conforme necessário -->
-      </div>
+      <!-- Eletrônicos -->
+      <li class="dropdown">
+        <a href="#" data-category="eletronicos">Eletrônicos</a>
+        <ul class="submenu">
+          <li><a href="#" data-subcategory="smartphones">Smartphones</a></li>
+          <li><a href="#" data-subcategory="notebooks">Notebooks</a></li>
+          <li><a href="#" data-subcategory="fones">Fones de ouvido Bluetooth</a></li>
+          <li><a href="#" data-subcategory="smartwatch">Smartwatches</a></li>
+          <li><a href="#" data-subcategory="powerbank">Carregadores portáteis</a></li>
+          <li><a href="#" data-subcategory="monitor">Monitores Gamer</a></li>
+          <li><a href="#" data-subcategory="caixa-som">Caixas de som portáteis</a></li>
+          <li><a href="#" data-subcategory="camera">Câmeras de segurança Wi-Fi</a></li>
+        </ul>
+      </li>
+
+      <!-- Moda -->
+      <li class="dropdown">
+        <a href="#" data-category="moda">Moda</a>
+        <ul class="submenu">
+          <li><a href="#" data-subcategory="masculina">Roupas masculinas</a></li>
+          <li><a href="#" data-subcategory="feminina">Roupas femininas</a></li>
+          <li><a href="#" data-subcategory="tenis">Tênis e calçados</a></li>
+          <li><a href="#" data-subcategory="acessorios">Acessórios</a></li>
+          <li><a href="#" data-subcategory="bolsas">Bolsas e mochilas</a></li>
+        </ul>
+      </li>
+
+      <!-- Casa -->
+      <li class="dropdown">
+        <a href="#" data-category="casa">Casa</a>
+        <ul class="submenu">
+          <li><a href="#" data-subcategory="eletro">Eletrodomésticos</a></li>
+          <li><a href="#" data-subcategory="decoracao">Decoração</a></li>
+          <li><a href="#" data-subcategory="cama">Cama, mesa e banho</a></li>
+          <li><a href="#" data-subcategory="cozinha">Utensílios de cozinha</a></li>
+          <li><a href="#" data-subcategory="moveis">Móveis</a></li>
+        </ul>
+      </li>
+
+      <!-- Esporte -->
+      <li class="dropdown">
+        <a href="#" data-category="esporte">Esporte</a>
+        <ul class="submenu">
+          <li><a href="#" data-subcategory="roupas-esportivas">Roupas esportivas</a></li>
+          <li><a href="#" data-subcategory="tenis-esportivos">Tênis esportivos</a></li>
+          <li><a href="#" data-subcategory="academia">Equipamentos de academia</a></li>
+          <li><a href="#" data-subcategory="bicicletas">Bicicletas e acessórios</a></li>
+          <li><a href="#" data-subcategory="suplementos">Suplementos e vitaminas</a></li>
+        </ul>
+      </li>
+
+      <!-- Livros -->
+      <li class="dropdown">
+        <a href="#" data-category="livros">Livros</a>
+        <ul class="submenu">
+          <li><a href="#" data-subcategory="ficcao">Ficção</a></li>
+          <li><a href="#" data-subcategory="nao-ficcao">Não ficção</a></li>
+          <li><a href="#" data-subcategory="autoajuda">Autoajuda</a></li>
+          <li><a href="#" data-subcategory="academicos">Livros acadêmicos</a></li>
+          <li><a href="#" data-subcategory="mangas">Mangás e HQs</a></li>
+        </ul>
+      </li>
+
+      <!-- Automotivo -->
+      <li class="dropdown">
+        <a href="#" data-category="automotivo">Automotivo</a>
+        <ul class="submenu">
+          <li><a href="#" data-subcategory="acessorios-carros">Acessórios para carros</a></li>
+          <li><a href="#" data-subcategory="pecas">Peças automotivas</a></li>
+          <li><a href="#" data-subcategory="pneus">Pneus e rodas</a></li>
+          <li><a href="#" data-subcategory="som-automotivo">Som automotivo</a></li>
+          <li><a href="#" data-subcategory="ferramentas">Ferramentas para manutenção</a></li>
+        </ul>
+      </li>
+
+      <!-- Pet -->
+      <li class="dropdown">
+        <a href="#" data-category="pet">Pet</a>
+        <ul class="submenu">
+          <li><a href="#" data-subcategory="racao">Ração e alimentos</a></li>
+          <li><a href="#" data-subcategory="brinquedos-pet">Brinquedos para pets</a></li>
+          <li><a href="#" data-subcategory="casinhas">Casinhas e camas</a></li>
+          <li><a href="#" data-subcategory="higiene-pet">Higiene e cuidados</a></li>
+          <li><a href="#" data-subcategory="acessorios-pet">Acessórios (coleiras, roupas)</a></li>
+        </ul>
+      </li>
+
+      <!-- Bebês -->
+      <li class="dropdown">
+        <a href="#" data-category="bebes">Bebês</a>
+        <ul class="submenu">
+          <li><a href="#" data-subcategory="roupas-bebes">Roupas para bebês</a></li>
+          <li><a href="#" data-subcategory="carrinhos">Carrinhos e cadeirinhas</a></li>
+          <li><a href="#" data-subcategory="brinquedos-bebes">Brinquedos infantis</a></li>
+          <li><a href="#" data-subcategory="mamadeiras">Mamadeiras e alimentação</a></li>
+          <li><a href="#" data-subcategory="higiene-bebes">Higiene e cuidados</a></li>
+        </ul>
+      </li>
+    </ul>
+  </nav>
+
+  <!-- Banner principal -->
+  <section class="banner">
+    <div class="banner-content">
+      <h1>Fill your basket with joy</h1>
+      <p>Aproveite nossas ofertas e muito mais!</p>
+    </div>
+  </section>
+
+  <!-- Lista de produtos (com cards) -->
+  <main>
+    <section class="cards-section" id="products-container">
+      <!-- Os produtos são renderizados dinamicamente via JS (script.js) -->
     </section>
   </main>
 
-  <!-- Modal do Carrinho -->
-  <div class="modal" id="cartModal">
-    <div class="modal-content">
-      <span class="close" id="cartModalClose">&times;</span>
-      <h2>Seu Carrinho</h2>
-      <div id="cartItems">
-        <!-- Itens do carrinho serão listados aqui -->
-      </div>
-      <button id="finalizarCompra">Finalizar Compra</button>
-    </div>
-  </div>
-
-  <!-- Modal da Fatura -->
-  <div class="modal" id="invoiceModal">
-    <div class="modal-content">
-      <span class="close" id="invoiceModalClose">&times;</span>
-      <h2>Sua Fatura</h2>
-      <p>Seu PDF será gerado para download.</p>
-      <button id="downloadInvoice">Baixar Fatura (PDF)</button>
-    </div>
-  </div>
-
-  <!-- Rodapé -->
+  <!-- Rodapé fixado ao fim da página (flex:1 no main) -->
   <footer>
-    <p>&copy; 2025 ShopMax. Todos os direitos reservados.</p>
+    <p>&copy; 2025 ShopMax. Inspirado na Amazon. Todos os direitos reservados.</p>
   </footer>
-
-  <script src="js/script.js"></script>
 </body>
 </html>
