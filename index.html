@@ -1,40 +1,92 @@
 <!DOCTYPE html>
-<html lang="pt">
+<html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ShopMax - Sua Loja Online</title>
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ShopMax - Seu E-commerce Ideal</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/responsive.css">
+  <!-- jsPDF para gerar PDF da fatura -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 </head>
 <body>
-    <header>
-        <h1>ShopMax</h1>
-        <nav>
-            <ul>
-                <li><a href="index.html">Início</a></li>
-                <li><a href="produtos.html">Produtos</a></li>
-                <li><a href="sobre.html">Sobre</a></li>
-                <li><a href="contato.html">Contato</a></li>
-            </ul>
-        </nav>
-    </header>
-    
-    <div class="hero">
-        <h2>Bem-vindo à ShopMax</h2>
-        <p>Os melhores produtos com os melhores preços!</p>
-        <a href="produtos.html" class="btn">Ver Produtos</a>
+  <!-- Cabeçalho com logo, carrinho e menu -->
+  <header class="header">
+    <div class="logo">
+      <a href="index.html">ShopMax</a>
     </div>
-    
-    <div class="container">
-        <h2>Por que comprar na ShopMax?</h2>
-        <p>A ShopMax é a sua melhor opção para encontrar produtos de qualidade com preços acessíveis. Oferecemos uma ampla variedade de produtos para atender às suas necessidades.</p>
-        <p>Nossa plataforma é segura e confiável, garantindo que seus dados estejam protegidos e suas compras sejam feitas com tranquilidade.</p>
-        <p>Além disso, contamos com um time de suporte dedicado para atender suas dúvidas e garantir a melhor experiência possível.</p>
-        <p>Seja bem-vindo e aproveite as promoções incríveis que preparamos para você!</p>
+    <!-- Ícone do Carrinho -->
+    <div class="cart" id="cart">
+      <img src="assets/images/cart-icon.png" alt="Carrinho">
+      <span id="cartCount">0</span>
     </div>
+    <!-- Ícone do menu para mobile -->
+    <div class="hamburger" id="hamburger">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+    <!-- Menu de Navegação -->
+    <nav class="nav" id="nav">
+      <ul>
+        <li><a href="index.html">Início</a></li>
+        <li><a href="produtos.html">Produtos</a></li>
+        <li><a href="equipe.html">Equipe</a></li>
+      </ul>
+    </nav>
+  </header>
 
-    <footer>
-        <p>&copy; 2025 ShopMax - Todos os direitos reservados.</p>
-    </footer>
+  <!-- Conteúdo Principal -->
+  <main>
+    <!-- Banner -->
+    <section class="banner">
+      <h1>Nós somos ShopMax</h1>
+      <p>Bem-vindos à nossa loja virtual! Aqui, juntos, construímos a melhor experiência de compra.</p>
+    </section>
+
+    <!-- Produtos em Destaque -->
+    <section class="produtos-destaque">
+      <h2>Produtos em Destaque</h2>
+      <div class="produtos-container">
+        <!-- Card de Produto (exemplo) -->
+        <article class="produto" data-id="1" data-nome="Produto 1" data-preco="99.90" data-categoria="eletronicos">
+          <img src="assets/images/produto1.jpg" alt="Produto 1">
+          <h3>Produto 1</h3>
+          <p>Descrição breve do produto.</p>
+          <button class="buy-btn">Comprar</button>
+        </article>
+        <!-- Duplicar ou adicionar outros cards conforme necessário -->
+      </div>
+    </section>
+  </main>
+
+  <!-- Modal do Carrinho -->
+  <div class="modal" id="cartModal">
+    <div class="modal-content">
+      <span class="close" id="cartModalClose">&times;</span>
+      <h2>Seu Carrinho</h2>
+      <div id="cartItems">
+        <!-- Itens do carrinho serão listados aqui -->
+      </div>
+      <button id="finalizarCompra">Finalizar Compra</button>
+    </div>
+  </div>
+
+  <!-- Modal da Fatura -->
+  <div class="modal" id="invoiceModal">
+    <div class="modal-content">
+      <span class="close" id="invoiceModalClose">&times;</span>
+      <h2>Sua Fatura</h2>
+      <p>Seu PDF será gerado para download.</p>
+      <button id="downloadInvoice">Baixar Fatura (PDF)</button>
+    </div>
+  </div>
+
+  <!-- Rodapé -->
+  <footer>
+    <p>&copy; 2025 ShopMax. Todos os direitos reservados.</p>
+  </footer>
+
+  <script src="js/script.js"></script>
 </body>
 </html>
