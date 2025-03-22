@@ -75,7 +75,7 @@ function renderProducts(products) {
     card.innerHTML = `
       <img src="${prod.image}" alt="${prod.name}" />
       <h2>${prod.name}</h2>
-      <p>Preço: R$${prod.price.toFixed(2)}</p>
+      <p>Preço: AOA ${prod.price.toFixed(2)}</p>
       <button onclick="addToCart(${prod.id})">Adicionar ao Carrinho</button>
     `;
     productsContainer.appendChild(card);
@@ -93,7 +93,7 @@ function renderCartItems() {
 
   if (cart.length === 0) {
     cartItemsDiv.innerHTML = '<p>Seu carrinho está vazio.</p>';
-    totalPriceEl.textContent = 'Total: R$0,00';
+    totalPriceEl.textContent = 'Total: AOA 0,00';
     return;
   }
 
@@ -102,13 +102,13 @@ function renderCartItems() {
     const itemDiv = document.createElement('div');
     itemDiv.classList.add('cart-item');
     itemDiv.innerHTML = `
-      <span>${item.name} - R$${item.price.toFixed(2)}</span>
+      <span>${item.name} - AOA ${item.price.toFixed(2)}</span>
       <button onclick="removeFromCart(${index})">Remover</button>
     `;
     cartItemsDiv.appendChild(itemDiv);
   });
 
-  totalPriceEl.textContent = `Total: R$${total.toFixed(2)}`;
+  totalPriceEl.textContent = `Total: AOA ${total.toFixed(2)}`;
 }
 
 // Renderiza itens do checkout (checkout.html)
@@ -122,7 +122,7 @@ function renderCheckoutItems() {
 
   if (cart.length === 0) {
     checkoutItemsDiv.innerHTML = '<p>Seu carrinho está vazio.</p>';
-    checkoutTotalPrice.textContent = 'Total: R$0,00';
+    checkoutTotalPrice.textContent = 'Total: AOA 0,00';
     return;
   }
 
@@ -130,11 +130,11 @@ function renderCheckoutItems() {
     total += item.price;
     const div = document.createElement('div');
     div.classList.add('cart-item');
-    div.textContent = `${item.name} - R$${item.price.toFixed(2)}`;
+    div.textContent = `${item.name} - AOA ${item.price.toFixed(2)}`;
     checkoutItemsDiv.appendChild(div);
   });
 
-  checkoutTotalPrice.textContent = `Total: R$${total.toFixed(2)}`;
+  checkoutTotalPrice.textContent = `Total: AOA ${total.toFixed(2)}`;
 }
 
 /* ===============================
@@ -199,12 +199,12 @@ function generatePDFInvoice() {
 
   let total = 0;
   cart.forEach((item, index) => {
-    doc.text(`${index + 1}. ${item.name} - R$${item.price.toFixed(2)}`, 14, y);
+    doc.text(`${index + 1}. ${item.name} - AOA ${item.price.toFixed(2)}`, 14, y);
     total += item.price;
     y += 10;
   });
   y += 5;
-  doc.text(`Total: R$${total.toFixed(2)}`, 14, y);
+  doc.text(`Total: AOA ${total.toFixed(2)}`, 14, y);
 
   // Exibir endereço e método de pagamento
   const nome = document.getElementById('nome')?.value || '';

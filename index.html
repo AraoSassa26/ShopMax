@@ -8,15 +8,56 @@
   <!-- jsPDF para geração de PDF (usado no checkout) -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
   <script defer src="js/script.js"></script>
+  <style>
+    /* Estilos do Popup */
+    .popup-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+    }
+    .popup-content {
+      background: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      text-align: center;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+      max-width: 300px;
+      margin: 0 20px;
+    }
+    .popup-content button {
+      margin-top: 10px;
+      padding: 8px 16px;
+      background: #ff6600;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+  </style>
 </head>
 <body>
+  <!-- Popup de aviso -->
+  <div class="popup-overlay" id="popup">
+    <div class="popup-content">
+      <p>Estamos atualizando nosso site para oferecer um conteúdo ainda melhor. Retorne em breve para conferir as novidades.</p>
+      <button id="close-popup">Fechar</button>
+    </div>
+  </div>
+
   <!-- Barra superior -->
   <div class="top-bar">
     <div class="top-bar-left">
       <img src="assets/images/amazon-pin.png" alt="Pin" />
       <div class="delivery-info">
         <span>Entregar em</span>
-        <strong>São Paulo</strong>
+        <strong>Angola</strong>
       </div>
     </div>
     <!-- Relógio em tempo real -->
@@ -181,7 +222,14 @@
 
   <!-- Rodapé fixado ao fim da página -->
   <footer>
-    <p>&copy; 2025 ShopMax. Inspirado na Amazon. Todos os direitos reservados.</p>
+    <p>&copy;  2025 ShopMax | Desenvolvido pela Sassa Corporation. Todos os direitos reservados..</p>
   </footer>
+
+  <script>
+    // Script para fechar o popup
+    document.getElementById('close-popup').addEventListener('click', function() {
+      document.getElementById('popup').style.display = 'none';
+    });
+  </script>
 </body>
 </html>
