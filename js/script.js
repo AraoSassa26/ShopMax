@@ -1,11 +1,11 @@
-// Lista de produtos (exemplo; adicione subcategory conforme sua lógica)
+// Lista de produtos (exemplo; adicione subcategory se desejar filtrar subcategorias)
 const productsData = [
   {
     id: 1,
     name: 'Produto 1',
     price: 50,
     category: 'eletronicos',
-    // subcategory: 'smartphones', // se quiser
+    // subcategory: 'smartphones', // Exemplo
     image: 'assets/images/produto1.jpg'
   },
   {
@@ -15,14 +15,7 @@ const productsData = [
     category: 'moda',
     image: 'assets/images/produto2.jpg'
   },
-  {
-    id: 3,
-    name: 'Produto 3',
-    price: 70,
-    category: 'casa',
-    image: 'assets/images/produto3.jpg'
-  },
-  // etc...
+  // ...
 ];
 
 // Carrinho (persistido em localStorage)
@@ -64,14 +57,18 @@ function startClock() {
 /* ===============================
    FUNÇÕES DE RENDERIZAÇÃO
 =================================*/
+
+// Renderiza produtos na página inicial (index.html)
 function renderProducts(products) {
   const productsContainer = document.getElementById('products-container');
   if (!productsContainer) return;
   productsContainer.innerHTML = '';
+
   if (products.length === 0) {
     productsContainer.innerHTML = '<p style="text-align:center;">Produto não encontrado no estoque.</p>';
     return;
   }
+
   products.forEach(prod => {
     const card = document.createElement('div');
     card.classList.add('product-card');
@@ -85,6 +82,7 @@ function renderProducts(products) {
   });
 }
 
+// Renderiza itens do carrinho (cart.html)
 function renderCartItems() {
   const cartItemsDiv = document.getElementById('cart-items');
   const totalPriceEl = document.getElementById('cart-total-price');
@@ -92,11 +90,13 @@ function renderCartItems() {
 
   cartItemsDiv.innerHTML = '';
   let total = 0;
+
   if (cart.length === 0) {
     cartItemsDiv.innerHTML = '<p>Seu carrinho está vazio.</p>';
     totalPriceEl.textContent = 'Total: R$0,00';
     return;
   }
+
   cart.forEach((item, index) => {
     total += item.price;
     const itemDiv = document.createElement('div');
@@ -107,9 +107,11 @@ function renderCartItems() {
     `;
     cartItemsDiv.appendChild(itemDiv);
   });
+
   totalPriceEl.textContent = `Total: R$${total.toFixed(2)}`;
 }
 
+// Renderiza itens do checkout (checkout.html)
 function renderCheckoutItems() {
   const checkoutItemsDiv = document.getElementById('checkout-items');
   const checkoutTotalPrice = document.getElementById('checkout-total-price');
@@ -117,11 +119,13 @@ function renderCheckoutItems() {
 
   checkoutItemsDiv.innerHTML = '';
   let total = 0;
+
   if (cart.length === 0) {
     checkoutItemsDiv.innerHTML = '<p>Seu carrinho está vazio.</p>';
     checkoutTotalPrice.textContent = 'Total: R$0,00';
     return;
   }
+
   cart.forEach(item => {
     total += item.price;
     const div = document.createElement('div');
@@ -129,11 +133,12 @@ function renderCheckoutItems() {
     div.textContent = `${item.name} - R$${item.price.toFixed(2)}`;
     checkoutItemsDiv.appendChild(div);
   });
+
   checkoutTotalPrice.textContent = `Total: R$${total.toFixed(2)}`;
 }
 
 /* ===============================
-   FUNÇÕES DE BUSCA E CATEGORIA
+   FUNÇÕES DE BUSCA, CATEGORIA E SUBCATEGORIA
 =================================*/
 function filterBySearch(query) {
   query = query.toLowerCase();
@@ -146,17 +151,14 @@ function filterByCategory(category) {
     renderProducts(productsData);
   } else if (category === 'ofertas' || category === 'mais-vendidos') {
     // Exemplo: poderia filtrar produtos marcados como oferta
-    renderProducts(productsData); // ou filtrar
+    renderProducts(productsData);
   } else {
     const filtered = productsData.filter(p => p.category === category);
     renderProducts(filtered);
   }
 }
 
-/* ===============================
-   SUBCATEGORIAS
-=================================*/
-// Se quiser subcategory no array (ex: subcategory: 'smartphones'), filtra:
+// Filtra subcategoria
 function filterBySubcategory(subcat) {
   const filtered = productsData.filter(p => p.subcategory === subcat);
   renderProducts(filtered);
@@ -186,6 +188,7 @@ function removeFromCart(index) {
 function generatePDFInvoice() {
   const { jsPDF } = window.jspdf;
   const doc = new jsPDF();
+
   let y = 20;
   doc.setFontSize(18);
   doc.text('Fatura - ShopMax', 14, y);
@@ -203,7 +206,7 @@ function generatePDFInvoice() {
   y += 5;
   doc.text(`Total: R$${total.toFixed(2)}`, 14, y);
 
-  // Pode exibir endereço e método de pagamento, se quiser
+  // Exibir endereço e método de pagamento
   const nome = document.getElementById('nome')?.value || '';
   const endereco = document.getElementById('endereco')?.value || '';
   const cidade = document.getElementById('cidade')?.value || '';
@@ -258,7 +261,7 @@ document.addEventListener('DOMContentLoaded', () => {
   updateCartCount();
   startClock();
 
-  // Se estiver em index.html, renderiza produtos e configura busca/categorias
+  // Se estiver em index.html
   if (document.getElementById('products-container')) {
     renderProducts(productsData);
 
@@ -277,7 +280,7 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
 
-    // Categorias (principais)
+    // Categorias
     const categoryLinks = document.querySelectorAll('.nav-links a[data-category]');
     categoryLinks.forEach(link => {
       link.addEventListener('click', (ev) => {
@@ -287,7 +290,7 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     });
 
-    // Subcategorias (dropdown)
+    // Subcategorias
     const subcatLinks = document.querySelectorAll('.submenu a[data-subcategory]');
     subcatLinks.forEach(sublink => {
       sublink.addEventListener('click', (ev) => {
@@ -298,15 +301,19 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Se estiver em cart.html, renderiza itens e botões
+  // Se estiver em cart.html
   if (document.getElementById('cart-items')) {
     renderCartItems();
+
+    // Botão Prosseguir para Checkout
     const goCheckoutBtn = document.getElementById('go-checkout');
     if (goCheckoutBtn) {
       goCheckoutBtn.addEventListener('click', () => {
         window.location.href = 'checkout.html';
       });
     }
+
+    // Botão Esvaziar Carrinho
     const clearCartBtn = document.getElementById('clear-cart');
     if (clearCartBtn) {
       clearCartBtn.addEventListener('click', () => {
@@ -318,21 +325,27 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  // Se estiver em checkout.html, renderiza itens e finaliza compra
+  // Se estiver em checkout.html
   if (document.getElementById('checkout-items')) {
     renderCheckoutItems();
+
+    // Botão Concluir Compra → Abre modal de fatura
     const finalizeBtn = document.getElementById('finalize-purchase-checkout');
     if (finalizeBtn) {
       finalizeBtn.addEventListener('click', () => {
         document.getElementById('invoice-modal').style.display = 'block';
       });
     }
+
+    // Botão Fechar modal
     const closeInvoiceModal = document.getElementById('close-invoice-modal');
     if (closeInvoiceModal) {
       closeInvoiceModal.addEventListener('click', () => {
         document.getElementById('invoice-modal').style.display = 'none';
       });
     }
+
+    // Botão Baixar Fatura (PDF)
     const downloadInvoiceBtn = document.getElementById('download-invoice');
     if (downloadInvoiceBtn) {
       downloadInvoiceBtn.addEventListener('click', () => {

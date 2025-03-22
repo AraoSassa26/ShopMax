@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ShopMax - Checkout</title>
+  <link rel="stylesheet" href="css/styles.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script defer src="js/script.js"></script>
+</head>
+<body>
+  <!-- Barra superior -->
+  <div class="top-bar">
+    <div class="top-bar-left">
+      <img src="assets/images/amazon-pin.png" alt="Pin" />
+      <div class="delivery-info">
+        <span>Entregar em</span>
+        <strong>São Paulo</strong>
+      </div>
+    </div>
+    <div class="top-bar-right">
+      <span id="clock"></span>
+    </div>
+  </div>
+
+  <!-- Cabeçalho -->
+  <header class="header">
+    <div class="header-left">
+      <div class="logo">
+        <a href="index.html">ShopMax</a>
+      </div>
+    </div>
+    <div class="header-right">
+      <div class="cart">
+        <img src="assets/images/cart-icon.png" alt="Carrinho" />
+        <span class="cart-count" id="cart-count">0</span>
+      </div>
+    </div>
+  </header>
+
+  <nav class="nav-links">
+    <ul>
+      <li><a href="cart.html">Voltar ao Carrinho</a></li>
+    </ul>
+  </nav>
+
+  <!-- Conteúdo de Checkout -->
+  <main>
+    <section class="checkout-section">
+      <h2>Finalizar Compra</h2>
+      <!-- Endereço -->
+      <div class="checkout-box">
+        <h3>Endereço de Entrega</h3>
+        <form id="address-form">
+          <label>Nome Completo:</label>
+          <input type="text" id="nome" required />
+          
+          <label>Endereço:</label>
+          <input type="text" id="endereco" required />
+
+          <label>Cidade:</label>
+          <input type="text" id="cidade" required />
+
+          <label>CEP:</label>
+          <input type="text" id="cep" required />
+        </form>
+      </div>
+
+      <!-- Métodos de Pagamento -->
+      <div class="checkout-box">
+        <h3>Método de Pagamento</h3>
+        <form id="payment-form">
+          <label>
+            <input type="radio" name="paymentMethod" value="cartao" checked />
+            Cartão de Crédito
+          </label>
+          <label>
+            <input type="radio" name="paymentMethod" value="boleto" />
+            Boleto
+          </label>
+          <label>
+            <input type="radio" name="paymentMethod" value="pix" />
+            PIX
+          </label>
+          <label>
+            <input type="radio" name="paymentMethod" value="paypal" />
+            PayPal
+          </label>
+        </form>
+      </div>
+
+      <!-- Resumo do Pedido -->
+      <div class="checkout-box">
+        <h3>Resumo do Pedido</h3>
+        <div id="checkout-items"></div>
+        <p class="total-price" id="checkout-total-price">Total: R$0,00</p>
+      </div>
+
+      <!-- Botão Finalizar -->
+      <button id="finalize-purchase-checkout">Concluir Compra</button>
+    </section>
+  </main>
+
+  <!-- Modal de Fatura (PDF) -->
+  <div class="invoice-modal" id="invoice-modal">
+    <div class="invoice-modal-content">
+      <span class="close" id="close-invoice-modal">&times;</span>
+      <h2>Sua Fatura</h2>
+      <p>Seu PDF será gerado para download.</p>
+      <button id="download-invoice">Baixar Fatura (PDF)</button>
+    </div>
+  </div>
+
+  <footer>
+    <p>&copy; 2025 ShopMax. Inspirado na Amazon. Todos os direitos reservados.</p>
+  </footer>
+</body>
+</html>
