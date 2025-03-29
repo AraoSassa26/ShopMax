@@ -251,28 +251,24 @@ function removeFromCart(index) {
 =================================*/
 function generatePDFInvoice() {
   const { jsPDF } = window.jspdf;
-  
-  // Define o tamanho do recibo: 80mm de largura (~226pt), altura dinâmica
+
   const doc = new jsPDF({
     unit: "pt",
-    format: [226, 400] // Largura fixa, altura ajustável
+    format: [226, 400]
   });
 
   let y = 20;
-  
-  // Configurar fonte monoespaçada (parecido com recibos reais)
+
   doc.setFont("courier", "bold");
   doc.setFontSize(14);
   doc.setTextColor(0, 0, 0);
   doc.text("SHOPMAX - FATURA", 113, y, { align: "center" });
 
-  // Linha separadora
   y += 10;
   doc.setLineWidth(0.5);
   doc.line(15, y, 210, y);
   y += 10;
 
-  // Número da fatura e data
   doc.setFont("courier", "normal");
   doc.setFontSize(10);
   const dataAtual = new Date().toLocaleString("pt-PT");
@@ -281,41 +277,50 @@ function generatePDFInvoice() {
   doc.text(`Data: ${dataAtual}`, 15, y);
   y += 15;
 
-  // Produtos comprados
   doc.setFont("courier", "bold");
   doc.setFontSize(11);
   doc.text("ITEMS COMPRADOS", 15, y);
   y += 10;
 
-  // Linha separadora
   doc.setLineWidth(0.3);
   doc.line(15, y, 210, y);
   y += 10;
 
-  // Listagem de produtos
   let total = 0;
   cart.forEach((item, index) => {
     doc.setFont("courier", "normal");
     doc.setFontSize(10);
-    doc.text(`${index + 1}. ${item.name}`, 15, y);
-    doc.text(`AOA ${item.price.toFixed(2)}`, 200, y, { align: "right" });
+
+    const itemName = `${index + 1}. ${item.name}`;
+    const itemPrice = `AOA ${item.price.toFixed(2)}`;
+
+    // Verifica se o nome do item é muito longo e quebra em várias linhas
+    const itemNameLines = doc.splitTextToSize(itemName, 140); // Reduz a largura para evitar sobreposição
+    itemNameLines.forEach((line, i) => {
+      doc.text(line, 15, y + i * 12);
+    });
+
+    doc.text(itemPrice, 200, y, { align: "right" });
+    y += itemNameLines.length * 12 + 8; // Adiciona espaçamento dinâmico com margem extra
     total += item.price;
-    y += 12;
+
+    // Verifica se a altura do PDF foi ultrapassada
+    if (y > 380) {
+      doc.addPage([226, 400]); // Adiciona nova página
+      y = 20; // Reinicia a posição vertical
+    }
   });
 
-  // Linha separadora
   y += 5;
   doc.line(15, y, 210, y);
   y += 10;
 
-  // Total
   doc.setFont("courier", "bold");
   doc.setFontSize(11);
   doc.text("TOTAL:", 15, y);
   doc.text(`AOA ${total.toFixed(2)}`, 200, y, { align: "right" });
   y += 20;
 
-  // Informações do cliente
   doc.setFont("courier", "bold");
   doc.setFontSize(11);
   doc.text("DADOS DO CLIENTE", 15, y);
@@ -339,17 +344,14 @@ function generatePDFInvoice() {
   doc.text(`NIF: ${nif}`, 15, y);
   y += 20;
 
-  // Mensagem final
   doc.setFont("courier", "bold");
   doc.setFontSize(10);
   doc.text("Obrigado pela preferência!", 113, y, { align: "center" });
   y += 15;
   doc.text("Volte Sempre!", 113, y, { align: "center" });
 
-  // Salvar como PDF
   doc.save("Fatura.pdf");
 }
-
 
 /* ===============================
    SUGESTÕES DE BUSCA
@@ -528,6 +530,32 @@ document.addEventListener('DOMContentLoaded', () => {
   modal.addEventListener('click', (event) => {
     if (event.target === modal) {
       closeImageModal();
+    }
+  });
+});
+
+document.addEventListener("DOMContentLoaded", () => {
+  const modal = document.getElementById("image-modal");
+  const modalImage = document.getElementById("modal-image");
+  const closeModal = document.querySelector(".close-modal");
+
+  // Adiciona evento de clique nas imagens dos produtos
+  document.querySelectorAll(".product-card img").forEach((img) => {
+    img.addEventListener("click", () => {
+      modalImage.src = img.src; // Define a imagem no modal
+      modal.style.display = "flex"; // Exibe o modal
+    });
+  });
+
+  // Fecha o modal ao clicar no botão de fechar
+  closeModal.addEventListener("click", () => {
+    modal.style.display = "none";
+  });
+
+  // Fecha o modal ao clicar fora do conteúdo
+  modal.addEventListener("click", (e) => {
+    if (e.target === modal) {
+      modal.style.display = "none";
     }
   });
 });

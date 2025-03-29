@@ -245,9 +245,9 @@ main {
   box-shadow: 0 6px 12px rgba(0,0,0,0.1);
 }
 .product-card img {
-  width: 100%; /* Garante que a imagem ocupe toda a largura disponível */
-  height: 150px; /* Define uma altura fixa para as imagens */
-  object-fit: contain; /* Garante que a imagem Não seja cortada  */
+  width: 100%; /* Mantém a largura total do card */
+  height: 200px; /* Aumenta a altura das imagens */
+  object-fit: contain; /* Garante que a imagem não seja cortada */
   border-radius: 4px;
   margin-bottom: 10px;
 }
@@ -468,20 +468,10 @@ main {
 
 .modal-content img {
   width: 100%; /* Garante que a imagem ocupe toda a largura do modal */
-  height: 300px; /* Define uma altura fixa para as imagens */
-  object-fit: contain; /* Não Corta a imagem proporcionalmente */
+  height: 400px; /* Define uma altura fixa para as imagens */
+  object-fit: contain; /* Não corta a imagem */
   border-radius: 8px;
   margin-bottom: 15px;
-}
-
-.modal-content h2 {
-  font-size: 1.5em;
-  margin-bottom: 10px;
-}
-
-.modal-content p {
-  font-size: 1.2em;
-  color: #333;
 }
 
 .close-modal {

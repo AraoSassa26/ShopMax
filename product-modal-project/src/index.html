@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Product Modal Project</title>
+    <link rel="stylesheet" href="css/styles.css" />
+    <link rel="stylesheet" href="css/modal.css" />
+</head>
+<body>
+    <header>
+        <h1>Produtos</h1>
+    </header>
+    <main>
+        <section class="product-gallery">
+            <div class="product-card" onclick="openModal('product1.jpg', 'Detalhes do Produto 1')">
+                <img src="images/product1.jpg" alt="Produto 1" />
+                <h2>Produto 1</h2>
+            </div>
+            <div class="product-card" onclick="openModal('product2.jpg', 'Detalhes do Produto 2')">
+                <img src="images/product2.jpg" alt="Produto 2" />
+                <h2>Produto 2</h2>
+            </div>
+            <div class="product-card" onclick="openModal('product3.jpg', 'Detalhes do Produto 3')">
+                <img src="images/product3.jpg" alt="Produto 3" />
+                <h2>Produto 3</h2>
+            </div>
+            <!-- Adicione mais produtos conforme necessário -->
+        </section>
+    </main>
+
+    <div id="modal" class="modal">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <img class="modal-content" id="modal-image" />
+        <div id="modal-caption"></div>
+    </div>
+
+    <script src="js/script.js"></script>
+    <script src="js/modal.js"></script>
+</body>
+</html>
