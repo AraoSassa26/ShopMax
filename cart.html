@@ -7,12 +7,57 @@
   <link rel="stylesheet" href="css/styles.css" />
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
   <script defer src="js/script.js"></script>
+  <style>
+    /* Estilos adicionais para o carrinho */
+    .cart-section {
+      max-width: 800px;
+      margin: 20px auto;
+      padding: 20px;
+      background: #f9f9f9;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    .cart-section h2 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    #cart-items {
+      margin-bottom: 20px;
+    }
+    .total-price {
+      font-size: 1.2rem;
+      font-weight: bold;
+      text-align: right;
+      margin-bottom: 20px;
+    }
+    button {
+      padding: 10px 20px;
+      margin: 5px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    #clear-cart {
+      background: #ff4d4d;
+      color: #fff;
+    }
+    #go-checkout {
+      background: #4caf50;
+      color: #fff;
+    }
+    #clear-cart:hover {
+      background: #e60000;
+    }
+    #go-checkout:hover {
+      background: #45a049;
+    }
+  </style>
 </head>
 <body>
   <!-- Barra superior -->
   <div class="top-bar">
     <div class="top-bar-left">
-      <img src="assets/images/amazon-pin.png" alt="Pin" />
+      <img src="imagens/pin-de-localizacao.png" alt="Pin" />
       <div class="delivery-info">
         <span>Entregar em</span>
         <strong>Angola</strong>
@@ -32,7 +77,7 @@
     </div>
     <div class="header-right">
       <div class="cart">
-        <img src="assets/images/cart-icon.png" alt="Carrinho" />
+        <img src="imagens/carrinho-de-compras.png" alt="Carrinho" />
         <span class="cart-count" id="cart-count">0</span>
       </div>
     </div>
@@ -48,7 +93,10 @@
   <main>
     <section class="cart-section">
       <h2>Seu Carrinho</h2>
-      <div id="cart-items"></div>
+      <div id="cart-items">
+        <!-- Os itens do carrinho serão renderizados dinamicamente via JS -->
+        <p>Seu carrinho está vazio.</p>
+      </div>
       <p class="total-price" id="cart-total-price">Total: R$0,00</p>
       <button id="clear-cart">Esvaziar Carrinho</button>
       <button id="go-checkout">Prosseguir para Checkout</button>
@@ -56,7 +104,22 @@
   </main>
 
   <footer>
-    <p>&copy;  2025 ShopMax | Desenvolvido pela Sassa Corporation. Todos os direitos reservados..</p>
+    <p>&copy; 2025 ShopMax. Todos os direitos reservados.</p>
   </footer>
+
+  <script>
+    // Exemplo de script para manipular o carrinho
+    document.getElementById('clear-cart').addEventListener('click', function() {
+      const cartItems = document.getElementById('cart-items');
+      cartItems.innerHTML = '<p>Seu carrinho está vazio.</p>';
+      document.getElementById('cart-total-price').textContent = 'Total: R$0,00';
+      document.getElementById('cart-count').textContent = '0';
+    });
+
+    document.getElementById('go-checkout').addEventListener('click', function() {
+      alert('Redirecionando para o checkout...');
+      // Aqui você pode adicionar a lógica para redirecionar para a página de checkout
+    });
+  </script>
 </body>
 </html>

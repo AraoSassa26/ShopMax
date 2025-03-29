@@ -1,59 +1,209 @@
-/* Para telas até 768px */
+/* Estilos para dispositivos com largura máxima de 768px (tablets e celulares) */
 @media (max-width: 768px) {
-  .hamburger {
-    display: flex;
-  }
-  
-  .nav {
-    position: absolute;
-    top: 65px;
-    right: 0;
-    background: linear-gradient(90deg, #0d47a1, #1976d2);
-    width: 220px;
+  /* Barra superior */
+  .top-bar {
     flex-direction: column;
-    border-radius: 0 0 8px 8px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-    display: none;
+    align-items: flex-start;
+    gap: 5px;
+    padding: 10px;
   }
-  
-  .nav.active {
-    display: flex;
+  .top-bar-left, .top-bar-right {
+    width: 100%;
+    justify-content: space-between;
   }
-  
-  .nav ul {
+
+  /* Cabeçalho principal */
+  .header {
     flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 10px;
   }
-  
-  .nav ul li {
-    margin: 15px 0;
+  .header-left, .header-right {
+    width: 100%;
+    justify-content: space-between;
+  }
+  .search-bar {
+    width: 100%;
+  }
+
+  /* Barra de categorias/links */
+  .nav-links ul {
+    flex-direction: column;
+    gap: 10px;
+    padding: 10px;
+  }
+
+  /* Banner principal */
+  .banner {
+    height: auto;
+    padding: 20px;
     text-align: center;
   }
-  
-  /* Ajuste dos cards */
-  .produto, .equipe .membro {
-    width: calc(50% - 40px);
-  }
-  
   .banner h1 {
-    font-size: 2.2em;
+    font-size: 1.5em;
   }
-  
   .banner p {
     font-size: 1em;
   }
+
+  /* Lista de produtos */
+  .cards-section {
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+  }
+  .product-card {
+    width: 90%;
+    padding: 15px;
+  }
+
+  /* Carrinho */
+  .cart-section {
+    padding: 10px;
+  }
+  .cart-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  /* Checkout */
+  .checkout-section {
+    padding: 10px;
+  }
+  .checkout-box {
+    padding: 10px;
+  }
 }
 
-/* Para telas até 480px */
+/* Estilos para dispositivos com largura máxima de 480px (celulares pequenos) */
 @media (max-width: 480px) {
-  .produto, .equipe .membro {
-    width: 100%;
+  /* Barra superior */
+  .top-bar {
+    font-size: 0.8em;
+    padding: 10px;
   }
-  
-  .header {
-    padding: 10px 20px;
-  }
-  
+
+  /* Cabeçalho principal */
   .logo a {
-    font-size: 1.5em;
+    font-size: 1.2em;
+  }
+  .all-categories #all-categories-btn {
+    padding: 6px 8px;
+    font-size: 0.9em;
+  }
+
+  /* Barra de busca */
+  #search-input {
+    padding: 6px;
+    font-size: 0.9em;
+  }
+  .search-button {
+    padding: 6px 10px;
+    font-size: 0.9em;
+  }
+
+  /* Banner principal */
+  .banner h1 {
+    font-size: 1.2em;
+  }
+  .banner p {
+    font-size: 0.9em;
+  }
+
+  /* Lista de produtos */
+  .product-card {
+    padding: 10px;
+    text-align: center;
+  }
+  .product-card h2 {
+    font-size: 1em;
+  }
+  .product-card p {
+    font-size: 0.9em;
+  }
+  .product-card button {
+    padding: 6px 10px;
+    font-size: 0.9em;
+  }
+
+  /* Carrinho */
+  .cart-item button {
+    padding: 6px 10px;
+    font-size: 0.8em;
+  }
+
+  /* Checkout */
+  #finalize-purchase-checkout {
+    padding: 8px;
+    font-size: 0.9em;
+  }
+
+  /* Rodapé */
+  footer {
+    font-size: 0.8em;
+    padding: 10px;
+  }
+}
+
+/* Estilos para dispositivos com largura máxima de 438px (celulares menores) */
+@media (max-width: 438px) {
+  /* Barra de categorias/links com rolagem horizontal */
+  .nav-links ul {
+    flex-direction: row;
+    overflow-x: auto;
+    white-space: nowrap;
+    gap: 5px;
+    padding: 10px;
+  }
+  .nav-links ul li {
+    display: inline-block;
+  }
+  .nav-links ul li a {
+    font-size: 0.9em;
+    padding: 5px 10px;
+    background: #37475a;
+    color: #fff;
+    border-radius: 4px;
+    text-align: center;
+    display: inline-block;
+  }
+
+  /* Ajustes no cabeçalho */
+  .header {
+    padding: 10px;
+  }
+  .logo a {
+    font-size: 1.1em;
+  }
+
+  /* Ajustes no banner */
+  .banner h1 {
+    font-size: 1.1em;
+  }
+  .banner p {
+    font-size: 0.9em;
+  }
+
+  /* Lista de produtos */
+  .product-card {
+    width: 100%;
+    padding: 10px;
+  }
+
+  /* Checkout */
+  .checkout-box {
+    padding: 8px;
+  }
+  #finalize-purchase-checkout {
+    padding: 8px;
+    font-size: 0.8em;
+  }
+
+  /* Rodapé */
+  footer {
+    font-size: 0.7em;
+    padding: 8px;
   }
 }

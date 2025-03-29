@@ -5,56 +5,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>ShopMax - Início</title>
   <link rel="stylesheet" href="css/styles.css" />
+  <link rel="stylesheet" href="css/responsive.css" />
   <!-- jsPDF para geração de PDF (usado no checkout) -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
   <script defer src="js/script.js"></script>
-  <style>
-    /* Estilos do Popup */
-    .popup-overlay {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0, 0, 0, 0.5);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      z-index: 1000;
-    }
-    .popup-content {
-      background: #fff;
-      padding: 20px;
-      border-radius: 8px;
-      text-align: center;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-      max-width: 300px;
-      margin: 0 20px;
-    }
-    .popup-content button {
-      margin-top: 10px;
-      padding: 8px 16px;
-      background: #ff6600;
-      color: #fff;
-      border: none;
-      border-radius: 4px;
-      cursor: pointer;
-    }
-  </style>
+  
 </head>
 <body>
-  <!-- Popup de aviso -->
-  <div class="popup-overlay" id="popup">
-    <div class="popup-content">
-      <p>Estamos trabalhando para melhorar a sua experiência. Este site está em desenvolvimento e estará disponível em breve.</p>
-      <button id="close-popup">Fechar</button>
-    </div>
-  </div>
+  
 
   <!-- Barra superior -->
   <div class="top-bar">
     <div class="top-bar-left">
-      <img src="assets/images/amazon-pin.png" alt="Pin" />
+      <img src="imagens/pin-de-localizacao.png" alt="Pin" />
       <div class="delivery-info">
         <span>Entregar em</span>
         <strong>Angola</strong>
@@ -71,7 +34,7 @@
     <!-- Esquerda: Logo + Botão “Todos” -->
     <div class="header-left">
       <div class="logo">
-        <a href="#">ShopMax</a>
+        <a href="index.html">ShopMax</a>
       </div>
       <div class="all-categories">
         <button id="all-categories-btn">&#9776; Todos</button>
@@ -90,7 +53,7 @@
     <div class="header-right">
       <div class="cart" id="cart-icon">
         <a href="cart.html">
-          <img src="assets/images/cart-icon.png" alt="Carrinho" />
+          <img src="imagens/carrinho-de-compras.png" alt="Carrinho" />
           <span class="cart-count" id="cart-count">0</span>
         </a>
       </div>
@@ -220,16 +183,21 @@
     </section>
   </main>
 
+  <!-- Modal para exibir detalhes da imagem -->
+  <div id="image-modal" class="modal">
+    <div class="modal-content">
+      <span class="close-modal">&times;</span>
+      <img id="modal-image" src="" alt="Detalhes do Produto" />
+      <h2 id="modal-title"></h2>
+      <p id="modal-price"></p>
+    </div>
+  </div>
+
   <!-- Rodapé fixado ao fim da página -->
   <footer>
-    <p>&copy;  2025 ShopMax | Desenvolvido pela Sassa Corporation. Todos os direitos reservados..</p>
+    <p>&copy;  2025 ShopMax.  Todos os direitos reservados..</p>
   </footer>
 
-  <script>
-    // Script para fechar o popup
-    document.getElementById('close-popup').addEventListener('click', function() {
-      document.getElementById('popup').style.display = 'none';
-    });
-  </script>
+  
 </body>
 </html>
