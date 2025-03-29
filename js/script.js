@@ -5,44 +5,44 @@ const productsData = [
   { id: 2, name: 'Samsung Galaxy S23', price: 920000, category: 'eletronicos', subcategory: 'smartphones', image: 'imagens/galaxy-s23.jpg' },
   { id: 3, name: 'Notebook Dell Inspiron 15', price: 1100000, category: 'eletronicos', subcategory: 'notebooks', image: 'imagens/dell-15.jpg' },
   { id: 4, name: 'MacBook Air M2', price: 1500000, category: 'eletronicos', subcategory: 'notebooks', image: 'imagens/mackbook-2.jpg' },
-  { id: 5, name: 'Fone JBL Tune 510BT', price: 45000, category: 'eletronicos', subcategory: 'fones', image: '/images/jbl_tune.jpg' },
+  { id: 5, name: 'Fone JBL Tune 510BT', price: 45000, category: 'eletronicos', subcategory: 'fones', image: '/imagens/JBL-tunes.jpg' },
   
   // Moda
-  { id: 6, name: 'Camisa Insider Tech T-Shirt', price: 18000, category: 'moda', subcategory: 'masculina', image: '/images/insider_tech.jpg' },
-  { id: 7, name: 'Jaqueta Nike Sportswear', price: 85000, category: 'moda', subcategory: 'masculina', image: '/images/nike_jaqueta.jpg' },
-  { id: 8, name: 'Vestido Longo Elegante', price: 60000, category: 'moda', subcategory: 'feminina', image: '/images/vestido_longo.jpg' },
-  { id: 9, name: 'Tênis Adidas Ultraboost', price: 95000, category: 'moda', subcategory: 'tenis', image: '/images/adidas_ultraboost.jpg' },
-  { id: 10, name: 'Mochila Executiva Samsonite', price: 120000, category: 'moda', subcategory: 'bolsas', image: '/images/mochila_samsonite.jpg' },
+  { id: 6, name: 'Camisa Insider Tech T-Shirt', price: 18000, category: 'moda', subcategory: 'masculina', image: '/imagens/t-shirt-tech.jpg' },
+  { id: 7, name: 'Jaqueta Nike Sportswear', price: 85000, category: 'moda', subcategory: 'masculina', image: '/imagens/Nike-sportswear.jpg' },
+  { id: 8, name: 'Vestido Longo Elegante', price: 60000, category: 'moda', subcategory: 'feminina', image: '/imagens/vestido-mojessy.jpg' },
+  { id: 9, name: 'Tênis Adidas Ultraboost', price: 95000, category: 'moda', subcategory: 'tenis', image: '/imagens/adidad-ultraboost.jpg' },
+  { id: 10, name: 'Mochila Executiva Samsonite', price: 120000, category: 'moda', subcategory: 'bolsas', image: '/imagens/mochila_samsonite.jpg' },
   
   // Casa
-  { id: 11, name: 'Aspirador de Pó Electrolux', price: 75000, category: 'casa', subcategory: 'eletro', image: '/images/aspirador.jpg' },
-  { id: 12, name: 'Sofá Retrátil e Reclinável', price: 350000, category: 'casa', subcategory: 'moveis', image: '/images/sofa.jpg' },
-  { id: 13, name: 'Jogo de Panelas Tramontina', price: 80000, category: 'casa', subcategory: 'cozinha', image: '/images/panelas.jpg' },
-  { id: 14, name: 'Cama Box Queen', price: 280000, category: 'casa', subcategory: 'cama', image: '/images/cama_box.jpg' },
-  { id: 15, name: 'Luminária LED Moderna', price: 35000, category: 'casa', subcategory: 'decoracao', image: '/images/luminaria.jpg' },
+  { id: 11, name: 'Aspirador de Pó Electrolux', price: 75000, category: 'casa', subcategory: 'eletro', image: '/imagens/aspirador.jpg' },
+  { id: 12, name: 'Sofá Retrátil e Reclinável', price: 350000, category: 'casa', subcategory: 'moveis', image: '/imagens/sofa.jpg' },
+  { id: 13, name: 'Jogo de Panelas Tramontina', price: 80000, category: 'casa', subcategory: 'cozinha', image: '/imagens/panelas.jpg' },
+  { id: 14, name: 'Cama Box Queen', price: 280000, category: 'casa', subcategory: 'cama', image: '/imagens/cama_box.jpg' },
+  { id: 15, name: 'Luminária LED Moderna', price: 35000, category: 'casa', subcategory: 'decoracao', image: '/imagens/luminaria.jpg' },
   
   // Esporte
-  { id: 16, name: 'Bicicleta Aro 29 Shimano', price: 230000, category: 'esporte', subcategory: 'bicicletas', image: '/images/bicicleta.jpg' },
-  { id: 17, name: 'Halteres 10kg (par)', price: 40000, category: 'esporte', subcategory: 'academia', image: '/images/halteres.jpg' },
-  { id: 18, name: 'Suplemento Whey Protein 1kg', price: 30000, category: 'esporte', subcategory: 'suplementos', image: '/images/whey_protein.jpg' },
+  { id: 16, name: 'Bicicleta Aro 29 Shimano', price: 230000, category: 'esporte', subcategory: 'bicicletas', image: '/imagens/bicicleta.jpg' },
+  { id: 17, name: 'Halteres 10kg (par)', price: 40000, category: 'esporte', subcategory: 'academia', image: '/imagens/halteres.jpg' },
+  { id: 18, name: 'Suplemento Whey Protein 1kg', price: 30000, category: 'esporte', subcategory: 'suplementos', image: '/imagens/whey_protein.jpg' },
   
   // Livros
-  { id: 19, name: 'Livro - O Poder do Hábito', price: 15000, category: 'livros', subcategory: 'autoajuda', image: '/images/poder_habito.jpg' },
-  { id: 20, name: 'Livro - Código Limpo', price: 25000, category: 'livros', subcategory: 'academicos', image: '/images/codigo_limpo.jpg' },
-  { id: 21, name: 'Mangá - One Piece Vol. 1', price: 12000, category: 'livros', subcategory: 'mangas', image: '/images/one_piece.jpg' },
+  { id: 19, name: ' O Poder do Hábito', price: 15000, category: 'livros', subcategory: 'autoajuda', image: '/imagens/poder_habito.jpg' },
+  { id: 20, name: ' Código Limpo', price: 25000, category: 'livros', subcategory: 'academicos', image: '/imagens/codigo_limpo.jpg' },
+  { id: 21, name: ' One Piece Vol. 1', price: 12000, category: 'livros', subcategory: 'mangas', image: '/imagens/one_piece.jpg' },
   
   // Automotivo
-  { id: 22, name: 'Kit Som Automotivo JBL', price: 150000, category: 'automotivo', subcategory: 'som-automotivo', image: '/images/som_jbl.jpg' },
-  { id: 23, name: 'Jogo de Rodas Aro 17', price: 400000, category: 'automotivo', subcategory: 'pneus', image: '/images/rodas_aro17.jpg' },
+  { id: 22, name: 'Kit Som Automotivo JBL', price: 150000, category: 'automotivo', subcategory: 'som-automotivo', image: '/imagens/som_jbl.jpg' },
+  { id: 23, name: 'Jogo de Rodas Aro 17', price: 400000, category: 'automotivo', subcategory: 'pneus', image: '/imagens/rodas_aro17.jpg' },
   
   // Pet
-  { id: 24, name: 'Ração Golden Fórmula 15kg', price: 32000, category: 'pet', subcategory: 'racao', image: '/images/racao.jpg' },
-  { id: 25, name: 'Cama para Cachorros', price: 25000, category: 'pet', subcategory: 'casinhas', image: '/images/cama_pet.jpg' },
+  { id: 24, name: 'Ração Golden Fórmula 15kg', price: 32000, category: 'pet', subcategory: 'racao', image: '/imagens/racao.jpg' },
+  { id: 25, name: 'Cama para Cachorros', price: 25000, category: 'pet', subcategory: 'casinhas', image: '/imagens/cama_pet.jpg' },
   
   // Bebês
-  { id: 26, name: 'Carrinho de Bebê Burigotto', price: 180000, category: 'bebes', subcategory: 'carrinhos', image: '/images/carrinho_bebe.jpg' },
-  { id: 27, name: 'Mamadeira Philips Avent', price: 12000, category: 'bebes', subcategory: 'mamadeiras', image: '/images/mamadeira.jpg' },
-  { id: 28, name: 'Banheira Dobrável para Bebê', price: 55000, category: 'bebes', subcategory: 'higiene-bebes', image: '/images/banheira.jpg' },
+  { id: 26, name: 'Carrinho de Bebê Burigotto', price: 180000, category: 'bebes', subcategory: 'carrinhos', image: '/imagens/carrinho_bebe.jpg' },
+  { id: 27, name: 'Mamadeira Philips Avent', price: 12000, category: 'bebes', subcategory: 'mamadeiras', image: '/imagens/mamadeira.jpg' },
+  { id: 28, name: 'Banheira Dobrável para Bebê', price: 55000, category: 'bebes', subcategory: 'higiene-bebes', image: '/imagens/banheira.jpg' },
 
   // Adicione mais produtos conforme necessário
 ];
